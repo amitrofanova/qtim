@@ -1,7 +1,19 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
 :root {
   --ui-primary: rgba(16, 16, 16, 1);
   --ui-secondary: rgba(243, 243, 243, 1);
   --ui-accent: rgba(226, 190, 255, 1);
+}
+
+@font-face {
+  font-family: "TTCommons";
+  src: url("~/assets/fonts/TT Commons Regular.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "TTCommons", sans-serif;
 }
