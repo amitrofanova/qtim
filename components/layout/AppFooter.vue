@@ -1,0 +1,127 @@
+<template>
+  <footer>
+    <div class="relative pt-34 pb-10 px-26 overflow-hidden bg-accent text-sm">
+      <div class="flex">
+        <div class="pr-100">
+          <p class="mb-16">Is there a project?</p>
+          <NuxtLink to="#" class="text-8xl leading-10">
+            <span
+              class="block pb-2 text-8xl underline underline-offset-16 decoration-1"
+              >Let’s work</span
+            >
+            <span class="text-8xl underline underline-offset-16 decoration-1"
+              >to</span
+            >
+            <span style="text-decoration: none">g</span>
+            <span class="underline underline-offset-16 decoration-1"
+              >ether</span
+            >
+          </NuxtLink>
+        </div>
+        <ul class="grid pt-20">
+          <li
+            v-for="contact in contacts"
+            :key="contact.title"
+            class="grid mb-5 last:pt-4"
+          >
+            <span class="pb-2">{{ contact.title }}</span>
+            <span v-if="contact.phone" class="pb-2">{{ contact.phone }}</span>
+            <span v-if="contact.email" class="pb-4">{{ contact.email }}</span>
+            <span v-if="contact.address" class="w-40 pb-2">{{
+              contact.address
+            }}</span>
+            <NuxtLink
+              v-if="contact.link"
+              class="w-[32px] h-[32px] grid place-items-center rounded-[50%] bg-primary"
+              ><img src="~/assets/img/tg.svg" alt="english"
+            /></NuxtLink>
+          </li>
+        </ul>
+      </div>
+      <nav aria-label="social links" class="flex flex-wrap mt-62 list">
+        <NuxtLink
+          v-for="(link, index) in socialLinks"
+          :key="link.text"
+          :to="link.url"
+          external
+          class="mr-10 underline underline-offset-6"
+          :style="{ 'margin-left': index === 3 ? 'auto' : '0' }"
+          >{{ link.text }}</NuxtLink
+        >
+      </nav>
+      <button class="grid p-30 text-2xl cursor-pointer circle text-white">
+        Go
+      </button>
+    </div>
+  </footer>
+</template>
+
+<script lang="ts" setup>
+const socialLinks = [
+  { text: "Facebook", url: "#" },
+  { text: "Instagram", url: "#" },
+  { text: "Telegram", url: "#" },
+  { text: "Behance", url: "#" },
+  { text: "Linkedn", url: "#" },
+  { text: "Privacy Policy", url: "#" },
+];
+
+const contacts = [
+  {
+    title: "For all questions",
+    phone: "+7 (920) 278—00—68",
+    email: "qtim@agency.com",
+  },
+  {
+    title: "For all questions",
+    link: "#",
+    address: "139 Ruben Station Lake Drew, NM 52678",
+  },
+  {
+    title: "For all questions",
+    link: "#",
+    address: "139 Ruben Station Lake Drew, NM 52678",
+  },
+];
+</script>
+
+<style lang="css" scoped>
+.list a:nth-child(n + 4) {
+  justify-self: end;
+}
+
+.circle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 358px;
+  height: 358px;
+  border-radius: 50%;
+  background-color: var(--ui-primary);
+}
+
+.custom-underline {
+  position: relative;
+  display: inline;
+  line-height: 1.2;
+}
+
+.custom-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.15em;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  mask: linear-gradient(
+    90deg,
+    currentColor 70%,
+    transparent 70%,
+    transparent 100%
+  );
+  mask-size: 4px 1px;
+  mask-repeat: repeat-x;
+}
+</style>
