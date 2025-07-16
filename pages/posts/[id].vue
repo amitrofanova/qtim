@@ -1,20 +1,17 @@
 <template>
-  <div class="max-w-3xl mx-auto p-4">
-    <UCard v-if="post" class="bg-white rounded shadow p-6">
-      <img :src="post.image" alt="" class="w-full h-auto mb-4 rounded" />
-      <h1 class="text-3xl font-bold mb-4">{{ post.title }}</h1>
-      <p class="mb-4 text-gray-700">{{ post.description }}</p>
-      <NuxtLink to="/" class="text-blue-500 hover:underline"
-        >Назад к списку</NuxtLink
-      >
-    </UCard>
-
+  <div class="w-[1216px] mx-auto py-30">
+    <div v-if="post" class="text-primary">
+      <h1 class="text-7xl mb-20">{{ post.title }}</h1>
+      <img :src="imgUrl" alt="" class="w-full h-[700px] mb-18 object-cover" />
+      <small class="">About</small>
+      <p class="py-8 max-w-[695px] text-3xl">{{ post.description }}</p>
+    </div>
     <div v-else class="text-center py-10">Загрузка...</div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+<script lang="ts" setup>
+import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 interface Post {
@@ -26,31 +23,27 @@ interface Post {
   description: string;
 }
 
-export default defineComponent({
-  setup() {
-    const post = ref<Post | null>(null);
+const post = ref<Post | null>(null);
 
-    const route = useRoute();
+const route = useRoute();
 
-    const fetchPostById = async (id: string) => {
-      try {
-        const res = await fetch(
-          `https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/${id}`
-        );
-        if (!res.ok) throw new Error("Post not found");
-        post.value = await res.json();
-      } catch (error) {
-        console.error(error);
-        post.value = null; // Можно добавить обработку ошибки отображения сообщения
-      }
-    };
+const fetchPostById = async (id: string) => {
+  try {
+    const res = await fetch(
+      `https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/${id}`
+    );
+    if (!res.ok) throw new Error("Post not found");
+    post.value = await res.json();
+  } catch (error) {
+    console.error(error);
+    post.value = null; // Можно добавить обработку ошибки отображения сообщения
+  }
+};
 
-    onMounted(() => {
-      const id = route.params.id as string;
-      fetchPostById(id);
-    });
-
-    return { post };
-  },
+onMounted(() => {
+  const id = route.params.id as string;
+  fetchPostById(id);
 });
+
+const imgUrl = "https://placehold.jp/280x280.png";
 </script>
