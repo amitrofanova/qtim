@@ -28,16 +28,21 @@
             class="grid mb-5 last:pt-4"
           >
             <span class="pb-2">{{ contact.title }}</span>
-            <span v-if="contact.phone" class="pb-2">{{ contact.phone }}</span>
-            <span v-if="contact.email" class="pb-4">{{ contact.email }}</span>
+            <a v-if="contact.phone" href="tel:+79999999999" class="pb-2">{{
+              contact.phone
+            }}</a>
+            <a v-if="contact.email" href="mailto:#" class="pb-4">{{
+              contact.email
+            }}</a>
             <span v-if="contact.address" class="w-40 pb-2">{{
               contact.address
             }}</span>
-            <NuxtLink
+            <a
               v-if="contact.link"
+              href="#"
               class="w-[32px] h-[32px] grid place-items-center rounded-[50%] bg-primary"
               ><img src="~/assets/img/tg.svg" alt="english"
-            /></NuxtLink>
+            /></a>
           </li>
         </ul>
       </div>
@@ -81,12 +86,12 @@ const contacts = [
     email: "qtim@agency.com",
   },
   {
-    title: "For all questions",
+    title: "Office in Russia",
     link: "#",
     address: "139 Ruben Station Lake Drew, NM 52678",
   },
   {
-    title: "For all questions",
+    title: "Office in Dubai",
     link: "#",
     address: "139 Ruben Station Lake Drew, NM 52678",
   },
