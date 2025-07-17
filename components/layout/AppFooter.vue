@@ -4,7 +4,7 @@
       <div class="flex">
         <div class="pr-100">
           <p class="mb-16">Is there a project?</p>
-          <NuxtLink to="#" class="text-8xl leading-10">
+          <NuxtLink to="#" class="relative inline-block">
             <span
               class="block pb-2 text-8xl underline underline-offset-16 decoration-1"
               >Let’s work</span
@@ -12,8 +12,11 @@
             <span class="text-8xl underline underline-offset-16 decoration-1"
               >to</span
             >
-            <span style="text-decoration: none">g</span>
-            <span class="underline underline-offset-16 decoration-1"
+            <span class="text-8xl relative"
+              >g<span
+                class="absolute bottom-[12px] left-[-16px] h-[1px] w-[20px] bg-accent" /><span
+                class="absolute bottom-[12px] right-[-16px] h-[1px] w-[20px] bg-accent" /></span
+            ><span class="text-8xl underline underline-offset-16 decoration-1"
               >ether</span
             >
           </NuxtLink>
@@ -38,7 +41,10 @@
           </li>
         </ul>
       </div>
-      <nav aria-label="social links" class="flex flex-wrap mt-62 list">
+      <nav
+        aria-label="social links"
+        class="flex flex-wrap mt-62 [&>a:nth-child(n+4)]:justify-self-end"
+      >
         <NuxtLink
           v-for="(link, index) in socialLinks"
           :key="link.text"
@@ -49,7 +55,9 @@
           >{{ link.text }}</NuxtLink
         >
       </nav>
-      <button class="grid p-30 text-2xl cursor-pointer circle text-white">
+      <button
+        class="grid p-30 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[358px] h-[358px] rounded-full bg-primary text-2xl cursor-pointer text-white"
+      >
         Go
       </button>
     </div>
@@ -84,44 +92,3 @@ const contacts = [
   },
 ];
 </script>
-
-<style lang="css" scoped>
-.list a:nth-child(n + 4) {
-  justify-self: end;
-}
-
-.circle {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  width: 358px;
-  height: 358px;
-  border-radius: 50%;
-  background-color: var(--ui-primary);
-}
-
-.custom-underline {
-  position: relative;
-  display: inline;
-  line-height: 1.2;
-}
-
-.custom-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0.15em;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  mask: linear-gradient(
-    90deg,
-    currentColor 70%,
-    transparent 70%,
-    transparent 100%
-  );
-  mask-size: 4px 1px;
-  mask-repeat: repeat-x;
-}
-</style>
