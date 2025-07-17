@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[1216px] mx-auto py-30">
+  <div class="w-[1216px] mx-auto pt-30 pb-20">
     <div v-if="post" class="text-primary">
       <h1 class="text-7xl mb-20">{{ post.title }}</h1>
       <img :src="imgUrl" alt="" class="w-full h-[700px] mb-18 object-cover" />
