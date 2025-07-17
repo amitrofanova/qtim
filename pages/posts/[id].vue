@@ -6,7 +6,7 @@
       <small class="">About</small>
       <p class="py-8 max-w-[695px] text-3xl">{{ post.description }}</p>
     </div>
-    <div v-else class="text-center py-10">Загрузка...</div>
+    <div v-else class="text-center py-10">Loading...</div>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ const fetchPostById = async (id: string) => {
     post.value = await res.json();
   } catch (error) {
     console.error(error);
-    post.value = null; // Можно добавить обработку ошибки отображения сообщения
+    post.value = null;
   }
 };
 
