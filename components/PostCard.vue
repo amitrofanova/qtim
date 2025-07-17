@@ -1,16 +1,14 @@
 <template>
   <NuxtLink :to="`/posts/${post.id}`">
     <div
-      class="group h-full transition-transform transform hover:-translate-y-4"
+      class="group h-full transition-transform transform hover:-translate-y-4 grid gap-4"
     >
-      <img :src="imgUrl" alt="" class="h-48 object-cover mb-2 rounded" />
-      <div class="p-4">
-        <h2 class="text-xl font-semibold mb-2">{{ post.title }}</h2>
-        <p class="text-gray-600">{{ post.preview }}</p>
-        <span class="opacity-0 group-hover:opacity-100 transition-opacity"
-          >Read more</span
-        >
-      </div>
+      <img :src="imgUrl" alt="" class="w-100 object-cover mb-2" />
+      <p class="text-md text-primary">{{ post.preview }}</p>
+      <span
+        class="opacity-0 group-hover:opacity-100 transition-opacity text-md text-accent"
+        >Read more</span
+      >
     </div>
   </NuxtLink>
 </template>
@@ -27,5 +25,5 @@ defineProps<{
   };
 }>();
 
-const imgUrl = "https://placehold.jp/150x150.png";
+const imgUrl = "https://placehold.jp/280x280.png";
 </script>
