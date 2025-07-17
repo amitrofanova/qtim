@@ -13,7 +13,7 @@ export function usePosts() {
   const posts = ref<Post[]>([]);
   const total = ref(0);
   const page = ref(1);
-  const perPage = 10;
+  const perPage = 8;
 
   const fetchPosts = async () => {
     try {
@@ -24,7 +24,7 @@ export function usePosts() {
       posts.value = data;
       total.value = data.length;
     } catch (error) {
-      console.error("Ошибка при загрузке постов:", error);
+      alert(`Ошибка при загрузке постов: ${error}`);
     }
   };
 
@@ -40,6 +40,7 @@ export function usePosts() {
     paginatedPosts,
     page,
     totalPages,
+    total,
     fetchPosts,
     setPage: (p: number) => {
       page.value = p;
